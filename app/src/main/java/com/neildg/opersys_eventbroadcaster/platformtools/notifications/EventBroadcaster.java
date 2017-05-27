@@ -80,6 +80,8 @@ public class EventBroadcaster {
 				listener.onNotify(notificationString, parameters);
 			}
 		}
+
+		parameters.clear();
 	}
 
 	public void postNotification(final String notificationString, final Parameters parameters) {

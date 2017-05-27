@@ -97,5 +97,14 @@ public class Parameters {
 			return defaultValue;
 		}
 	}
+
+	public void clear() {
+		this.boolData.clear();
+		this.intData.clear();
+		this.doubleData.clear();
+		this.floatData.clear();
+		this.objData.clear();
+		this.stringData.clear();
+	}
 	
 }
