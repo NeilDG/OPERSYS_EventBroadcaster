@@ -6,7 +6,7 @@ package com.neildg.opersys_eventbroadcaster.platformtools.notifications;
  * @author user
  *
  */
-public interface NotificationListener {
+public interface EventListener {
 
 	void onNotify(String notificationString, Parameters params);
 }

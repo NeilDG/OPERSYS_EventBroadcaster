@@ -58,9 +58,15 @@ public class Console {
         }
     }
 
-    public static void log(String message) {
+    public static void log(final String message) {
         if(sharedInstance != null) {
-            sharedInstance.debugBuilder.getTool().log(message);
+            //Not running this on a UI thread will cause the program to crash or throw a CalledFromWrongThreadException.
+            sharedInstance.activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    sharedInstance.debugBuilder.getTool().log(message);
+                }
+            });
         }
         else {
             Log.e(TAG, "Console not yet initialized!");
@@ -68,14 +74,7 @@ public class Console {
     }
 
     public static void log(final String tag, final String message) {
-        //Not running this on a UI thread will cause the program to crash.
-        sharedInstance.activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                log("[" +tag+ "], " +message);
-            }
-        });
-
+        log("[" +tag+ "], " +message);
     }
 
     public static boolean isShown() {

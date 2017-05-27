@@ -3,6 +3,7 @@ package com.neildg.opersys_eventbroadcaster.threads;
 import android.util.Log;
 
 import com.neildg.opersys_eventbroadcaster.debugging.Console;
+import com.neildg.opersys_eventbroadcaster.platformtools.core_application.RandomUtil;
 
 import java.util.Random;
 
@@ -29,23 +30,12 @@ public class WorkerThread extends Thread {
                 Thread.sleep(1000); //pause for 1 seconds
             }
 
-            int randomDelay = randomRange(100, 5000);
+            int randomDelay = RandomUtil.randomRangeInclusive(100, 5000);
             Console.log(TAG + "_"+threadID, "I'm going to do something after "+randomDelay+ " seconds!");
             Thread.sleep(randomDelay);
             Console.log(TAG + "_"+threadID, "Yehey! I did nothing!");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static int randomRange(int min, int max) {
-        // Usually this can be a field rather than a method variable
-        Random rand = new Random();
-
-        // nextInt is normally exclusive of the top value,
-        // so add 1 to make it inclusive
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-
-        return randomNum;
     }
 }

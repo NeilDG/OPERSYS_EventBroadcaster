@@ -6,6 +6,6 @@ package com.neildg.opersys_eventbroadcaster.platformtools.notifications;
  * @author user
  *
  */
-public class Notifications {
-
+public class EventNames {
+    public final static String ON_NUMBER_PRODUCED = "ON_NUMBER_PRODUCED";
 }
